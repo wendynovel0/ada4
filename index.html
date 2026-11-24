@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pendiente — actividades y recordatorios</title>
+<meta name="description" content="PWA para administrar actividades y recordatorios personales, con uso sin conexión.">
+<meta name="theme-color" content="#6c5ce7">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<aside class="side" aria-label="Navegación">
+  <div class="brand"><img src="icons/icon.svg" alt="" width="34" height="34"><b>Pendiente</b></div>
+  <nav id="nav">
+    <button class="on" data-f="all">Todas <span id="c-all">0</span></button>
+    <button data-f="pendiente">Pendientes <span id="c-pendiente">0</span></button>
+    <button data-f="progreso">En progreso <span id="c-progreso">0</span></button>
+    <button data-f="hecha">Hechas <span id="c-hecha">0</span></button>
+  </nav>
+  <div class="promo"><h3>Funciona sin internet</h3><p>Tus cambios se guardan en el dispositivo y se sincronizan al volver la conexión.</p>
+    <button id="install" class="btn dark" hidden>Instalar app</button></div>
+</aside>
+
+<main>
+  <header class="top">
+    <div><h1 id="hello">Hola</h1><p class="muted">¿Qué quieres lograr hoy?</p></div>
+    <div class="tools">
+      <input id="q" type="search" placeholder="Buscar actividad" aria-label="Buscar">
+      <span id="net" class="pill ok">En línea</span>
+      <button id="sync" class="pill" title="Cambios por sincronizar">Sync <b id="pend">0</b></button>
+      <button id="bell" class="icon" aria-label="Activar notificaciones">🔔</button>
+      <button id="theme" class="icon" aria-label="Cambiar tema">🌓</button>
+      <button id="add" class="btn">+ Nueva actividad</button>
+    </div>
+  </header>
+
+  <section class="stats">
+    <article class="card"><div class="ring" id="r-total" style="--p:0"><i>0</i></div><div><b>Total</b><span class="muted">actividades</span></div></article>
+    <article class="card"><div class="ring c2" id="r-done" style="--p:0"><i>0%</i></div><div><b>Completado</b><span class="muted">hechas</span></div></article>
+    <article class="card"><div class="ring c3" id="r-prog" style="--p:0"><i>0</i></div><div><b>En curso</b><span class="muted">en progreso</span></div></article>
+    <article class="card"><div class="ring c4" id="r-late" style="--p:0"><i>0</i></div><div><b>Vencidas</b><span class="muted">requieren atención</span></div></article>
+  </section>
+
+  <section class="grid">
+    <div class="board" id="board" aria-live="polite"></div>
+    <aside class="panel card">
+      <h2>Próximos recordatorios</h2>
+      <ul id="upcoming"></ul>
+      <h2>Prioridad</h2>
+      <div class="bars" id="bars"></div>
+    </aside>
+  </section>
+</main>
+
+<dialog id="dlg">
+  <form id="form" method="dialog">
+    <h2 id="dtitle">Nueva actividad</h2>
+    <input type="hidden" id="f-id">
+    <label>Título<input id="f-title" required maxlength="80" placeholder="Ej. Entregar reporte"></label>
+    <label>Descripción<textarea id="f-desc" rows="3" maxlength="300"></textarea></label>
+    <div class="row">
+      <label>Fecha y hora del recordatorio<input id="f-due" type="datetime-local"></label>
+      <label>Prioridad<select id="f-pri"><option value="alta">Alta</option><option value="media" selected>Media</option><option value="baja">Baja</option></select></label>
+    </div>
+    <label>Estado<select id="f-st"><option value="pendiente">Pendiente</option><option value="progreso">En progreso</option><option value="hecha">Hecha</option></select></label>
+    <div class="acts"><button type="button" class="btn ghost" id="cancel">Cancelar</button><button class="btn" type="submit">Guardar</button></div>
+  </form>
+</dialog>
+<div id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>

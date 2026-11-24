@@ -1,0 +1,31 @@
+{
+  "id": "./index.html",
+  "name": "Pendiente — actividades y recordatorios",
+  "short_name": "Pendiente",
+  "description": "Administra tus actividades y recordatorios personales, incluso sin conexión.",
+  "lang": "es-MX",
+  "dir": "ltr",
+  "start_url": "./index.html?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#eef0f8",
+  "theme_color": "#6c5ce7",
+  "categories": ["productivity", "lifestyle"],
+  "prefer_related_applications": false,
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "screenshots": [
+    { "src": "screenshots/wide.png", "sizes": "1280x720", "type": "image/png", "form_factor": "wide", "label": "Tablero de actividades por estado" },
+    { "src": "screenshots/narrow.png", "sizes": "540x960", "type": "image/png", "form_factor": "narrow", "label": "Vista móvil de actividades" }
+  ],
+  "shortcuts": [
+    { "name": "Nueva actividad", "short_name": "Nueva", "description": "Registrar una actividad o recordatorio", "url": "./index.html?new=1&source=shortcut",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] }
+  ]
+}
